@@ -13,7 +13,7 @@
 <body class="bg-[#30475e]">
 <div class="relative flex flex-wrap flex-col  items-center justify-center min-h-screen w-full">
     <div class="flex relative flex-wrap flex-col sm:flex-col md:flex-col lg:flex-col xl:flex-col items-center justify-center pt-7">
-    
+
     @if(session('user') && optional(session('user'))->username === 'admin')
     <!-- Botón para la perspectiva de administrador -->
     <a href="{{ url('/sistema-administracion') }}">
@@ -97,7 +97,8 @@
                     <div class="label">
                         <span class="label-text text-white">Corr</span>
                     </div>
-                    <input type="text" name="corr" placeholder="Type here" class="text-black bg-gray-50 border-gray-300 input input-bordered w-full" />
+                    <input type="text" name="corr" placeholder="Type here" class="text-black bg-gray-50 border-gray-300 input input-bordered w-full"
+                    value="{{ $ultimoCorr + 1 }}" readonly/>
                 </label>
                 @error('corr')
                             <span class="text-red-600">{{ $message }}</span>
@@ -181,10 +182,10 @@
                             <span class="text-red-600">{{ $message }}</span>
                     @enderror
                 </div>
-                
+
             </div>
 
-            
+
             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                 <div>
                     <label class="form-control w-full">
@@ -209,7 +210,7 @@
                         <span class="text-red-600">{{ $message }}</span>
                     @enderror
                 </div>
-                
+
             </div>
 
             <!-- Resto de los campos -->
@@ -386,8 +387,8 @@
     <!-- Model 2 -->
     <dialog id="my_modal_2" class="modal " x-data="{ openModal: false, activeTab: 'tabla1' }" @click.outside="openModal = false">
     <div class="modal-box max-w-full md:max-w-7xl bg-[#84878d]">
-        
-       
+
+
     <div style="width: 100%; display: flex; justify-content: center; margin: 0px 0px 10px 0px;">
                 <button class="mr-4 btn btn-accent" @click="activeTab = 'tabla1'"
                     :class="{ 'btn-accent': activeTab === 'tabla1' }">Tabla 1</button>
@@ -395,7 +396,7 @@
                     :class="{ 'btn-accent': activeTab === 'tabla2' }">Tabla 2</button>
             </div>
         <form class="p-4 md:p-5"  method="POST">
-             
+
             <div class="mb-2">
             <hr />
         </div>
@@ -407,7 +408,7 @@
                     @include('components.tabla-2')
                 </div>
 
-                
+
             </form>
     </div>
     <form method="dialog" class="modal-backdrop">
